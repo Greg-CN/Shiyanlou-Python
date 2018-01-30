@@ -20,22 +20,16 @@ elif sq >3500:
     yns = int(sq - 3500)
 if yns <= 1500:
     print(format(yns * 0.03,".2f"))
-    exit()
-elif yns > 1500 <= 4500:
+elif yns <= 4500:
     print(format(yns * 0.1 - 105,".2f"))
-    exit()
-elif yns > 4500 <= 9000:
+elif yns <= 9000:
     print(format(yns * 0.2 - 555,".2f"))
-    exit()
-elif yns > 9000 <= 35000:
+elif yns <= 35000:
     print(format(yns * 0.25 - 1005,".2f"))
-    exit()
-elif yns > 35000 <= 55000:
+elif yns  <= 55000:
     print(format(yns * 0.3 - 2755,".2f"))
-    exit()
-elif yns > 55000 <= 80000:
+elif yns <= 80000:
     print(format(yns * 0.35 - 5505,".2f"))
-    exit()
 elif yns > 80000:
     print(format(yns * 0.45 - 13505,".2f"))
-    exit()
+exit()
