@@ -1,35 +1,46 @@
 #!/usr/bin/env python3
+#gong zi = gz
+#gong hao = id
+#ying na shui = yns
+#shui qian = sq
+#shui hou = sh
 import sys
-try:
-    int(sys.argv[1])
-except IndexError:
-    print("Parameter loss")
-    print("Example:")
-    print("./calculator.py 3500")
-    exit()
-except ValueError:
-    print("Parameter Error")
-    exit()
-#shui qian gong zi
-sq = int(sys.argv[1])
-if sq <= 3500:
-    print(format(0,".2f"))
-    exit()
-elif sq >3500:
-    #ying na shui 
-    yns = int(sq - 3500)
-if yns <= 1500:
-    print(format(yns * 0.03,".2f"))
-elif yns <= 4500:
-    print(format(yns * 0.1 - 105,".2f"))
-elif yns <= 9000:
-    print(format(yns * 0.2 - 555,".2f"))
-elif yns <= 35000:
-    print(format(yns * 0.25 - 1005,".2f"))
-elif yns  <= 55000:
-    print(format(yns * 0.3 - 2755,".2f"))
-elif yns <= 80000:
-    print(format(yns * 0.35 - 5505,".2f"))
-elif yns > 80000:
-    print(format(yns * 0.45 - 13505,".2f"))
-exit()
+def jisuan(gz, bili=0.165):
+	sq = gz - gz * bili
+	if sq <= 3500:
+		print(id, end=':')
+		print(format(sq,".2f"))
+	else:
+		yns = sq - 3500
+		if yns <= 1500:
+			print(id, end=':')
+			print(format(sq - (yns * 0.03 - 0),".2f"))
+		elif yns <= 4500:
+			print(id, end=':')
+			print(format(sq - (yns * 0.1 - 105),".2f"))
+		elif yns <= 9000:
+			print(id, end=':')
+			print(format(sq - (yns * 0.2 - 555),".2f"))
+		elif yns <= 35000:
+			print(id, end=':')
+			print(format(sq - (yns * 0.25 - 1005),".2f"))
+		elif yns <= 55000:
+			print(id, end=':')
+			print(format(sq - (yns * 0.3 - 2755),".2f"))
+		elif yns <= 80000:
+			print(id, end=':')
+			print(format(sq - (yns * 0.35 - 5505),".2f"))
+		elif yns > 80000:
+			print(id, end=':')
+			print(format(sq - (yns * 0.45 - 13505),".2f"))
+if __name__=="__main__":
+	for arg in sys.argv[1:]:
+		arg = arg.split(':')
+		try:
+			int(arg[1])
+		except:
+			print("Parameter Error")
+			exit()
+		gz = int(arg[1])
+		id = arg[0]
+		jisuan(gz)
