@@ -59,6 +59,7 @@ def User(user_file):
 
 def jisuan(gz,bl,xx,sx):
 	global sb
+	global sh
 	global gs
 	if gz <= xx:
 		sb = float(format(xx * bl, ".2f"))
@@ -84,11 +85,12 @@ def jisuan(gz,bl,xx,sx):
 			gs = format(yns * 0.35 - 5505,".2f")
 		elif yns > 80000:
 			gs = format(yns * 0.45 - 13505,".2f")
+	sh = format(gz - sb - float(gs),".2f")
 
 
 
 def Write(info,write_file):
-        with open(write_file, 'w') as wfile:
+        with open(write_file, 'a') as wfile:
                 wfile.write(info)
 
 
@@ -120,4 +122,13 @@ if __name__=='__main__':
 		print("Missing output path")
 		exit()
 	config = Config(conf_file)
-	
+	User(usr)
+	for cl in id_gz:
+		id = cl[0]
+		gz = int(cl[1])
+		bl = float(config.get_shebao())
+		xx = int(config.get_JiShuL())
+		sx = int(config.get_JiShuH())
+		jisuan(gz,bl,xx,sx)
+		info = id + ',' + str(gz) + ',' + str(sb) + ',' + str(gs) + ',' + str(sh) + '\n'
+		Write(info,out)
